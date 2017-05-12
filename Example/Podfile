@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'QuickTable_Example' do
-  pod 'QuickTable', :path => '../'
+    pod 'QuickTable', :path => '../'
 
   target 'QuickTable_Tests' do
     inherit! :search_paths

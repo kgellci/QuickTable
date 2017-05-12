@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol QuickSectionProtocol {
+public protocol QuickSectionProtocol {
     var headerTitle: String? { get set }
     var footerTitle: String? { get set }
     var rowHeight: CGFloat? { get set }
@@ -18,17 +18,17 @@ protocol QuickSectionProtocol {
     func heightForRow(_ row: Int) -> CGFloat
 }
 
-enum QuickSectionOption {
+public enum QuickSectionOption {
     case headerTitle(String)
     case footerTitle(String)
     case rowCount(Int)
     case rowHeight(CGFloat)
 }
 
-class QuickSectionBase: QuickSectionProtocol {
-    var headerTitle: String?
-    var footerTitle: String?
-    var rowHeight: CGFloat?
+public class QuickSectionBase: QuickSectionProtocol {
+    public var headerTitle: String?
+    public var footerTitle: String?
+    public var rowHeight: CGFloat?
     
     fileprivate func populateFromOptions(_ options: [QuickSectionOption]) {
         for option in options {
@@ -49,24 +49,24 @@ class QuickSectionBase: QuickSectionProtocol {
         }
     }
     
-    func numberOfRows() -> Int {
+    public func numberOfRows() -> Int {
         assert(false, "numberOfRows not implemented in subclass")
     }
     
-    func cellModelAtRow(_ row: Int, forTableView tableView: UITableView) -> QuickRow {
+    public func cellModelAtRow(_ row: Int, forTableView tableView: UITableView) -> QuickRow {
         assert(false, "cellModelAtRow not implemented in subclass")
     }
     
-    func heightForRow(_ row: Int) -> CGFloat {
+    public func heightForRow(_ row: Int) -> CGFloat {
         assert(false, "heightForRow not implemented in subclass")
     }
 }
 
-class QuickSectionDynamic: QuickSectionBase {
+public class QuickSectionDynamic: QuickSectionBase {
     private let cellFetchBlock: (Int) -> QuickRow
     private var rowsCount: Int = 0
     
-    init(options: [QuickSectionOption], cellFetchBlock: @escaping (Int) -> QuickRow) {
+    public init(options: [QuickSectionOption], cellFetchBlock: @escaping (Int) -> QuickRow) {
         self.cellFetchBlock = cellFetchBlock
         super.init()
         self.populateFromOptions(options)
@@ -81,15 +81,15 @@ class QuickSectionDynamic: QuickSectionBase {
         }
     }
     
-    override func numberOfRows() -> Int {
+    override public func numberOfRows() -> Int {
         return rowsCount
     }
     
-    override func cellModelAtRow(_ row: Int, forTableView tableView: UITableView) -> QuickRow {
+    override public func cellModelAtRow(_ row: Int, forTableView tableView: UITableView) -> QuickRow {
         return cellFetchBlock(row)
     }
     
-    override func heightForRow(_ row: Int) -> CGFloat {
+    override public func heightForRow(_ row: Int) -> CGFloat {
         if let rowHeight = rowHeight {
             return rowHeight
         }
@@ -97,10 +97,10 @@ class QuickSectionDynamic: QuickSectionBase {
     }
 }
 
-class TKSectionModel: QuickSectionBase {
-    var cellModels = [QuickRow]()
+public class QuickSection: QuickSectionBase {
+    public var cellModels = [QuickRow]()
     
-    init(options: [QuickSectionOption]?) {
+    public init(options: [QuickSectionOption]?) {
         super.init()
         guard let options = options else { return }
         self.populateFromOptions(options)
@@ -110,15 +110,15 @@ class TKSectionModel: QuickSectionBase {
         return cellModels[row]
     }
     
-    override func numberOfRows() -> Int {
+    override public func numberOfRows() -> Int {
         return cellModels.count
     }
     
-    override func cellModelAtRow(_ row: Int, forTableView tableView: UITableView) -> QuickRow {
+    override public func cellModelAtRow(_ row: Int, forTableView tableView: UITableView) -> QuickRow {
         return cellModelForRow(row)
     }
     
-    override func heightForRow(_ row: Int) -> CGFloat {
+    override public func heightForRow(_ row: Int) -> CGFloat {
         if let rowHeight = rowHeight {
             return rowHeight
         }

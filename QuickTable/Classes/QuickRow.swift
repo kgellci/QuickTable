@@ -11,19 +11,19 @@ import Foundation
 
 import UIKit
 
-class QuickRow {
+public class QuickRow {
     private var reuseIdentifier: String
-    var styleBlock: ((UITableViewCell) -> Void)?
-    var selectionBlock: ((UITableViewCell) -> Bool)?
-    var selectionStyle: UITableViewCellSelectionStyle = .default
-    var computeRowHeightBlock: ((QuickRow) -> CGFloat)?
+    public var styleBlock: ((UITableViewCell) -> Void)?
+    public var selectionBlock: ((UITableViewCell) -> Bool)?
+    public var selectionStyle: UITableViewCellSelectionStyle = .default
+    public var computeRowHeightBlock: ((QuickRow) -> CGFloat)?
     
-    init(reuseIdentifier: String, styleBlock: ((UITableViewCell) -> Void)?) {
+    public init(reuseIdentifier: String, styleBlock: ((UITableViewCell) -> Void)?) {
         self.reuseIdentifier = reuseIdentifier
         self.styleBlock = styleBlock
     }
     
-    init(reuseIdentifier: String, styleBlock: ((UITableViewCell) -> Void)?, selectionBlock: @escaping ((UITableViewCell) -> Bool)) {
+    public init(reuseIdentifier: String, styleBlock: ((UITableViewCell) -> Void)?, selectionBlock: @escaping ((UITableViewCell) -> Bool)) {
         self.reuseIdentifier = reuseIdentifier
         self.styleBlock = styleBlock
         self.selectionBlock = selectionBlock
