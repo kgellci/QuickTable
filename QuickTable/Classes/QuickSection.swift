@@ -51,14 +51,17 @@ public class QuickSectionBase: QuickSectionProtocol {
     
     public func numberOfRows() -> Int {
         assert(false, "numberOfRows not implemented in subclass")
+        return 0
     }
     
     public func cellModelAtRow(_ row: Int, forTableView tableView: UITableView) -> QuickRow {
         assert(false, "cellModelAtRow not implemented in subclass")
+        return QuickRow(reuseIdentifier: "", styleBlock: nil)
     }
     
     public func heightForRow(_ row: Int) -> CGFloat {
         assert(false, "heightForRow not implemented in subclass")
+        return 0
     }
 }
 

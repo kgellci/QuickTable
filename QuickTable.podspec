@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'QuickTable'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of QuickTable.'
+  s.summary          = 'A quicker way to build TableViews'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,12 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+The goal is to provide a robust UITableView solution which provides a clean and easy to read format.
+
+Some TableView implementations, especially settings screens, can use a variety of cells and section ranging from dynamic
+to static.  The goal is to offer a clean solution for quickly building these views while providing an easy to maintain
+solution.  Settings screens change during a product lifecycle, adding a row here or a section there should not be an
+extrodenary feat of if / else statements.
                        DESC
 
   s.homepage         = 'https://github.com/kgellci/QuickTable'
