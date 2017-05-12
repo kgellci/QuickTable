@@ -1,0 +1,6 @@
+framework module Pods_QuickTable_Tests {
+  umbrella header "Pods-QuickTable_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

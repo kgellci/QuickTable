@@ -22,7 +22,7 @@ pod "QuickTable"
 
 ## Author
 
-kgellci, kgellci@gmail.com
+Kris Gellci, kgellci@gmail.com
 
 ## License
 
