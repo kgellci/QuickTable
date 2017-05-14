@@ -8,8 +8,18 @@
 
 import UIKit
 
+/// A subclass of UITableView which allwos for quick and easy setup.
+/// QuickTable automatically sets itself as the UITableViews DataSource and Delegate.
 public class QuickTable: UITableView {
+    
+    /// The sections which the table view will display
     public var sections = [QuickSectionProtocol]()
+    
+    /// Will initialize with a frame of 0 and a UITableViewStyle of plain
+    init() {
+        super.init(frame: CGRect.zero, style: .plain)
+        setup()
+    }
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -37,7 +47,7 @@ extension QuickTable: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = sections[indexPath.section].cellModelAtRow(indexPath.row, forTableView: tableView)
+        let cellModel = sections[indexPath.section].quickRowForIndex(indexPath.row)
         let cell = cellModel.cellForTableView(tableView)
         
         cellModel.styleBlock?(cell)
@@ -56,7 +66,7 @@ extension QuickTable: UITableViewDataSource {
 
 extension QuickTable: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellModel = sections[indexPath.section].cellModelAtRow(indexPath.row, forTableView: tableView)
+        let cellModel = sections[indexPath.section].quickRowForIndex(indexPath.row)
         guard let selectionBlock = cellModel.selectionBlock else { return }
         if selectionBlock(cellModel.cellForTableView(tableView)) {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -64,6 +74,6 @@ extension QuickTable: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return sections[indexPath.section].heightForRow(indexPath.row)
+        return sections[indexPath.section].heightForRowAtIndex(indexPath.row)
     }
 }

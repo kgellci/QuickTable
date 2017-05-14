@@ -22,37 +22,37 @@ class ViewController: UIViewController {
         
         // Extra Section
         
-        let extraSection = QuickSection(options: nil)
-        
-        extraSection.cellModels = [QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
+        let row = QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
             cell.textLabel?.text = "This is a blank section with a single cell"
-        })]
+        })
+        
+        let extraSection = QuickSection(quickRowModels: [row])
         
         // Section 1
         let firstSection = QuickSection(options: [.headerTitle("Section 1")])
         
-        firstSection.cellModels.append(QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
+        firstSection += QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
             cell.textLabel?.text = "This is a cell 1"
-        }))
+        })
         
-        firstSection.cellModels.append(QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
+        firstSection += QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
             cell.textLabel?.text = "You can select this"
         }, selectionBlock: { (cell) -> Bool in
             return false
-        }))
+        })
         
-        firstSection.cellModels.append(QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
+        firstSection += QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
             cell.textLabel?.text = "You can select this and it will auto deselect"
         }, selectionBlock: { (cell) -> Bool in
             return true
-        }))
+        })
         
         // Section 2
         let secondSection = QuickSection(options: [.headerTitle("Section 2"), .footerTitle("This one has a footer")])
         
-        secondSection.cellModels.append(QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
+        secondSection += QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
             cell.textLabel?.text = "This is a cell 1"
-        }))
+        })
         
         let cell = QuickRow(reuseIdentifier: "MyTableViewCell", styleBlock: { (cell) in
             cell.textLabel?.text = "This is a cell 2"
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         cell.computeRowHeightBlock = { (cell) -> CGFloat in
             return 150
         }
-        secondSection.cellModels.append(cell)
+        secondSection += cell
         
         
         // dynamic section
