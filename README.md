@@ -4,7 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/QuickTable.svg?style=flat)](http://cocoapods.org/pods/QuickTable)
 [![License](https://img.shields.io/cocoapods/l/QuickTable.svg?style=flat)](http://cocoapods.org/pods/QuickTable)
 [![Platform](https://img.shields.io/cocoapods/p/QuickTable.svg?style=flat)](http://cocoapods.org/pods/QuickTable)
-[![Swift 3.1](https://img.shields.io/badge/Swift-3.0-orange.svg)
+![Swift 3.1](https://img.shields.io/badge/Swift-3.0-orange.svg)
 
 ## Warning
 
@@ -78,7 +78,7 @@ pod "QuickTable"
 
 ## Author
 
-Kris Gellci, [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://www.twitter.com/kgellci)
+Kris Gellci [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://www.twitter.com/kgellci)
 
 ## License
 
